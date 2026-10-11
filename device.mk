@@ -43,26 +43,21 @@ AB_OTA_POSTINSTALL_CONFIG += \
     POSTINSTALL_OPTIONAL_system=true
 
 # API
-PRODUCT_SHIPPING_API_LEVEL := 32
+PRODUCT_SHIPPING_API_LEVEL := 34
 
-# Bootctrl
+# Bootctrl (AIDL)
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.2-mtkimpl \
-    android.hardware.boot@1.2-mtkimpl.recovery
+    android.hardware.boot-service.default
 
-PRODUCT_PACKAGES_DEBUG += \
-    bootctrl
-
-# Fastbootd
+# Fastbootd (AIDL)
 TW_INCLUDE_FASTBOOTD := true
 
 PRODUCT_PACKAGES += \
-    android.hardware.fastboot@1.0-impl-mock
+    android.hardware.fastboot-service.recovery.default
 
-# Health Hal
+# Health Hal (Uses TW_USE_LEGACY_BATTERY_SERVICES in BoardConfig)
 PRODUCT_PACKAGES += \
-    android.hardware.health@2.1-impl \
-    android.hardware.health@2.1-service
+    android.hardware.health-service.recovery
 
 PRODUCT_PACKAGES_DEBUG += \
     update_engine_client
@@ -83,8 +78,12 @@ TARGET_RECOVERY_DEVICE_MODULES += \
     libion 
 
 TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
-    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.vibrator-V1-ndk_platform.so \
+    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.vibrator-V2-ndk.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/libion.so
+
+# Wi-Fi configuration
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/recovery/root/vendor/etc/wifi/wpa_supplicant.conf:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/etc/wifi/wpa_supplicant.conf
 
 # Keymint / Gatekeeper / TEE blobs - pulled from stock tornado device
 PRODUCT_COPY_FILES += \

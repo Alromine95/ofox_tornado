@@ -58,7 +58,7 @@ jobs:
             lib32z1-dev libxml2-utils xsltproc unzip \
             python3 python-is-python3 rsync bc gperf libssl-dev \
             libncurses5-dev libncursesw5-dev \
-            lz4 cpio liblzma-dev optipng
+            lz4 cpio liblzma-dev optipng rustc cargo
 
       - name: Install repo
         run: |
