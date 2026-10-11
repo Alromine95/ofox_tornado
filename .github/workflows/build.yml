@@ -38,6 +38,17 @@ jobs:
           sudo apt-get clean
           sudo docker system prune -af || true
 
+
+      - name: Set up Swap Space
+        run: |
+          sudo swapoff -a
+          sudo rm -f /swapfile
+          sudo fallocate -l 12G /swapfile
+          sudo chmod 600 /swapfile
+          sudo mkswap /swapfile
+          sudo swapon /swapfile
+          free -h
+
       - name: Install Dependencies
         run: |
           sudo apt-get update
