@@ -1,10 +1,6 @@
 name: Remote SSH Debug Runner
 
 on:
-  push:
-    branches:
-      - main
-      - aera
   workflow_dispatch:
 
 jobs:
