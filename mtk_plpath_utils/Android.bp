@@ -4,11 +4,11 @@ cc_binary {
     recovery_available: true,
     init_rc: ["mtk-plpath-utils.rc"],
     static_libs: [
-        "libfs_mgr"
+        "libfs_mgr",
+        "libdm"
     ],
     shared_libs: [
         "libbase",
         "liblog",
-        "libdm",
     ]
 }
