@@ -51,7 +51,6 @@ export OF_DEFAULT_TIMEZONE="TAIST-5:30;IST"
 export OF_FBE_METADATA_MOUNT_IGNORE=1
 
 # Partition Tools & Backups
-export OF_ENABLE_LPTOOLS=1
 export OF_ENABLE_ALL_PARTITION_TOOLS=1
 export OF_QUICK_BACKUP_LIST="/boot;/data;/super;"
 export OF_ENABLE_WLAN=1
